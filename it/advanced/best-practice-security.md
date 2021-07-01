@@ -37,7 +37,6 @@ Attualmente, Helmet non è altro che una raccolta di nove funzioni middleware pi
 
 * [csp](https://github.com/helmetjs/csp) imposta l'intestazione `Content-Security-Policy` per impedire attacchi XSS (cross-site scripting) e altri attacchi da altri siti.
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) rimuove l'intestazione `X-Powered-By`.
-* [hpkp](https://github.com/helmetjs/hpkp) aggiunge le intestazioni [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) per impedire attacchi man-in-the-middle con certificati contraffatti.
 * [hsts](https://github.com/helmetjs/hsts) imposta l'intestazione `Strict-Transport-Security` che rafforza connessioni (HTTP su SSL/TLS) sicure per il server.
 * [ieNoOpen](https://github.com/helmetjs/ienoopen) imposta `X-Download-Options` per IE8+.
 * [noCache](https://github.com/helmetjs/nocache) imposta le intestazioni `Cache-Control` e Pragma per disabilitare la memorizzazione in cache della parte client.
@@ -142,46 +141,6 @@ app.use(session({
 </code>
 </pre>
 
-## Assicurarsi che le dipendenze siano sicure
-
-L'utilizzo di npm per gestire le dipendenze dell'applicazione è ottimo e conveniente.  Però i pacchetti che si utilizzano possono contenere vulnerabilità di sicurezza critiche che potrebbero influenzare l'applicazione.  La sicurezza dell'applicazione è sicura quanto l'"anello debole" nelle dipendenze.
-
-Utilizzare uno o entrambi dei due strumenti di seguito indicati per garantire la sicurezza di pacchetti di terze parti che vengono utilizzati: [nsp](https://www.npmjs.com/package/nsp) e [requireSafe](https://requiresafe.com/).  Questi due strumenti principalmente svolgono le stesse attività.
-
-[nsp](https://www.npmjs.com/package/nsp) è uno strumento della riga comandi che verifica il database delle vulnerabilità [Node Security Project](https://nodesecurity.io/) per determinare se l'applicazione utilizza pacchetti con vulnerabilità note. Installarlo come segue:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm i nsp -g
-</code>
-</pre>
-
-Utilizzare questo comando per inviare il file `npm-shrinkwrap.json` per la convalida a [nodesecurity.io](https://nodesecurity.io/):
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-shrinkwrap
-</code>
-</pre>
-
-Utilizzare questo comando per inviare il file `package.json` per la convalida a [nodesecurity.io](https://nodesecurity.io/):
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-package
-</code>
-</pre>
-
-Seguono alcune indicazioni su come utilizzare [requireSafe](https://requiresafe.com/) per verificare i moduli Node:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm install -g requiresafe
-$ cd your-app
-$ requiresafe check
-</code>
-</pre>
-
 ## Ulteriori informazioni
 
 Ecco alcuni consigli sull'eccellente [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/).  Fare riferimento a quel post del blog per tutti i dettagli su questi consigli:
@@ -196,6 +155,6 @@ Ecco alcuni consigli sull'eccellente [Node.js Security Checklist](https://blog.r
 
 ## Evitare altre vulnerabilità note
 
-Prestare attenzione alle avvertenze [Node Security Project](https://nodesecurity.io/advisories) che potrebbero influenzare Express o altri moduli utilizzati dall'applicazione.  Solitamente, il Node Security Project è una risorsa eccellente per questioni di apprendimento e per gli strumenti sulla sicurezza di Node.
+Prestare attenzione alle avvertenze [Node Security Project](https://npmjs.com/advisories) che potrebbero influenzare Express o altri moduli utilizzati dall'applicazione.  Solitamente, il Node Security Project è una risorsa eccellente per questioni di apprendimento e per gli strumenti sulla sicurezza di Node.
 
 Infine, le applicazioni Express, come anche altre applicazioni web, possono essere vulnerabili ad una vasta gamma di attacchi basati su web. Cercare di comprendere al meglio le [vulnerabilità web](https://www.owasp.org/index.php/Top_10_2013-Top_10) note e prendere precauzioni per evitarle.

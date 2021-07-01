@@ -153,8 +153,8 @@ However, there are two caveats:
 const wrap = fn => (...args) => fn(...args).catch(args[2])
 
 app.get('/', wrap(async (req, res, next) => {
-  let company = await getCompanyById(req.query.id)
-  let stream = getLogoStreamById(company.id)
+  const company = await getCompanyById(req.query.id)
+  const stream = getLogoStreamById(company.id)
   stream.on('error', next).pipe(res)
 }))
 ```
@@ -263,16 +263,16 @@ There are two ways to use init systems with your Express app:
 
 Systemd is a Linux system and service manager. Most major Linux distributions have adopted systemd as their default init system.
 
-A systemd service configuration file is called a _unit file_, with a filename ending in .service. Here's an example unit file to manage a Node app directly (replace the bold text with values for your system and app):
+A systemd service configuration file is called a _unit file_, with a filename ending in `.service`. Here's an example unit file to manage a Node app directly.  Replace the values enclosed in `<angle brackets>` for your system and app:
 
 ```sh
 [Unit]
-Description=Awesome Express App
+Description=<Awesome Express App>
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node /projects/myapp/index.js
-WorkingDirectory=/projects/myapp
+ExecStart=/usr/local/bin/node </projects/myapp/index.js>
+WorkingDirectory=</projects/myapp>
 
 User=nobody
 Group=nogroup
@@ -420,20 +420,20 @@ To enable cluster mode, start your application like so:
 
 ```sh
 # Start 4 worker processes
-$ pm2 start app.js -i 4
+$ pm2 start npm --name my-app -i 4 -- start
 # Auto-detect number of available CPUs and start that many worker processes
-$ pm2 start app.js -i max
+$ pm2 start npm --name my-app -i max -- start
 ```
 
 This can also be configured within a PM2 process file (`ecosystem.config.js` or similar) by setting `exec_mode` to `cluster` and `instances` to the number of workers to start.
 
-Once running, a given application with the name `app` can be scaled like so:
+Once running, the application can be scaled like so:
 
 ```sh
 # Add 3 more workers
-$ pm2 scale app +3
+$ pm2 scale my-app +3
 # Scale to a specific number of workers
-$ pm2 scale app 2
+$ pm2 scale my-app 2
 ```
 
 For more information on clustering with PM2, see [Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/) in the PM2 documentation.

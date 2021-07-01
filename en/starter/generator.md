@@ -16,7 +16,7 @@ You can run the application generator with the `npx` command (available in Node.
 $ npx express-generator
 ```
 
-For earlier Node versions, install the application generator as a global npm package and then launch it.
+For earlier Node versions, install the application generator as a global npm package and then launch it:
 
 ```sh
 $ npm install -g express-generator
@@ -82,11 +82,18 @@ On MacOS or Linux, run the app with this command:
 $ DEBUG=myapp:* npm start
 ```
 
-On Windows, use this command:
+On Windows Command Prompt, use this command:
 
 ```sh
 > set DEBUG=myapp:* & npm start
 ```
+
+On Windows PowerShell, use this command:
+
+```sh
+PS> $env:DEBUG='myapp:*'; npm start
+```
+
 
 Then load `http://localhost:3000/` in your browser to access the app.
 

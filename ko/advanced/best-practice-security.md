@@ -54,7 +54,6 @@ Express 2.x 및 3.x에 대한 유지보수는 더 이상 이루어지지 않습�
 
 * [csp](https://github.com/helmetjs/csp)는 `Content-Security-Policy` 헤더를 설정하여 XSS(Cross-site scripting) 공격 및 기타 교차 사이트 인젝션을 예방합니다.
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by)는 `X-Powered-By` 헤더를 제거합니다.
-* [hpkp](https://github.com/helmetjs/hpkp)는 [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) 헤더를 추가하여, 위조된 인증서를 이용한 중간자 공격을 방지합니다.
 * [hsts](https://github.com/helmetjs/hsts)는 서버에 대한 안전한(SSL/TLS를 통한 HTTP) 연결을 적용하는 `Strict-Transport-Security` 헤더를 설정합니다.
 * [ieNoOpen](https://github.com/helmetjs/ienoopen)은 IE8 이상에 대해 `X-Download-Options`를 설정합니다.
 * [noCache](https://github.com/helmetjs/nocache)는 `Cache-Control` 및 Pragma 헤더를 설정하여 클라이언트 측에서 캐싱을 사용하지 않도록 합니다.
@@ -191,7 +190,7 @@ $ snyk wizard
 <a name="avoid-other-known-vulnerabilities"></a>
 ## 그 외의 알려져 있는 취약점 회피
 
-Express에, 또는 앱에 사용되는 다른 모듈에 영향을 미칠 수 있는 [Node Security Project](https://nodesecurity.io/advisories)의 보안 권고문에 항상 주의를 기울이십시오.  일반적으로 Node Security Project는 Node의 보안과 관련된 지식 및 도구에 대한 훌륭한 자원입니다.
+Express에, 또는 앱에 사용되는 다른 모듈에 영향을 미칠 수 있는 [Node Security Project](https://npmjs.com/advisories)의 보안 권고문에 항상 주의를 기울이십시오.  일반적으로 Node Security Project는 Node의 보안과 관련된 지식 및 도구에 대한 훌륭한 자원입니다.
 
 마지막으로, 다른 모든 웹 앱과 마찬가지로 Express 앱은 다양한 웹 기반 공격에 취약할 수 있습니다. 알려져 있는 [웹 취약성](https://www.owasp.org/index.php/Top_10_2013-Top_10)을 숙지한 후 이러한 취약성을 피하기 위한 예방 조치를 취하십시오.
 

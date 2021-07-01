@@ -69,9 +69,10 @@ http://localhost:3000/static/hello.html
 `express.static` fonksiyonu ile tanımladığınız yollar `node` processini çalıştırdığınız dizine bağlıdır. Bu yüzden, eğer express uygulamasını başka bir dizinden çalıştırıyorsanız, statik dizini tam adres olarak tanımlamanız daha güvenli olur.
 
 ```js
+const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
 
-`serve-static` hakkında daha fazla bilgi almak için, [serve-static](/{{page.lang}}/resources/middleware/serve-static.html) sayfasına göz atın.
+`serve-static` hakkında daha fazla bilgi almak için, [serve-static](/resources/middleware/serve-static.html) sayfasına göz atın.
 
 ### [Önceki: Basit Yol Atama ](/{{ page.lang }}/starter/basic-routing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Sonraki: Sıkça Sorulan Sorular ](/{{ page.lang }}/starter/faq.html)

@@ -14,7 +14,7 @@ The term _"production"_ refers to the stage in the software lifecycle when an ap
 Development and production environments are usually set up differently and have vastly different requirements. What's fine in development may not be acceptable in production. For example, in a development environment you may want verbose logging of errors for debugging, while the same behavior can become a security concern in a production environment. And in development, you don't need to worry about scalability, reliability, and performance, while those concerns become critical in production.
 
 {% include note.html content="If you believe you have discovered a security vulnerability in Express, please see
-[Security Policies and Procedures](https://github.com/strongloop/express/blob/master/Security.md).
+[Security Policies and Procedures](https://github.com/expressjs/express/blob/master/Security.md).
 " %}
 
 Security best practices for Express applications in production include:
@@ -50,7 +50,6 @@ Helmet is actually just a collection of nine smaller middleware functions that s
 
 * [csp](https://github.com/helmetjs/csp) sets the `Content-Security-Policy` header to help prevent cross-site scripting attacks and other cross-site injections.
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) removes the `X-Powered-By` header.
-* [hpkp](https://github.com/helmetjs/hpkp) Adds [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) headers to prevent man-in-the-middle attacks with forged certificates.
 * [hsts](https://github.com/helmetjs/hsts) sets `Strict-Transport-Security` header that enforces secure (HTTP over SSL/TLS) connections to the server.
 * [ieNoOpen](https://github.com/helmetjs/ienoopen) sets `X-Download-Options` for IE8+.
 * [noCache](https://github.com/helmetjs/nocache) sets `Cache-Control` and Pragma headers to disable client-side caching.
@@ -155,19 +154,13 @@ app.use(session({
 
 Using npm to manage your application's dependencies is powerful and convenient.  But the packages that you use may contain critical security vulnerabilities that could also affect your application.  The security of your app is only as strong as the "weakest link" in your dependencies.
 
-Use either or both of the following two tools to help ensure the security of third-party packages that you use: [nsp](https://www.npmjs.com/package/nsp) and [Snyk](https://snyk.io/).
-
-[nsp](https://www.npmjs.com/package/nsp) is a command-line tool that checks the [Node Security Project](https://nodesecurity.io/) vulnerability database to determine if your application uses packages with known vulnerabilities. Install it as follows:
+Since npm@6, npm automatically reviews every install request. Also you can use 'npm audit' to analyze your dependency tree.
 
 ```sh
-$ npm i nsp -g
+$ npm audit
 ```
 
-Use this command to submit the `npm-shrinkwrap.json` / `package.json` files for validation to [nodesecurity.io](https://nodesecurity.io/):
-
-```sh
-$ nsp check
-```
+If you want to stay more secure, consider [Snyk](https://snyk.io/).
 
 Snyk offers both a [command-line tool](https://www.npmjs.com/package/snyk) and a [Github integration](https://snyk.io/docs/github) that checks your application against [Snyk's open source vulnerability database](https://snyk.io/vuln/) for any known vulnerabilities in your dependencies. Install the CLI as follows:
 
@@ -176,7 +169,7 @@ $ npm install -g snyk
 $ cd your-app
 ```
 
-Use this command to test your application for vulnerabilities: 
+Use this command to test your application for vulnerabilities:
 
 ```sh
 $ snyk test
@@ -190,7 +183,7 @@ $ snyk wizard
 
 ## Avoid other known vulnerabilities
 
-Keep an eye out for [Node Security Project](https://nodesecurity.io/advisories) or [Snyk](https://snyk.io/vuln/) advisories that may affect Express or other modules that your app uses.  In general, these databases are excellent resources for knowledge and tools about Node security.
+Keep an eye out for [Node Security Project](https://npmjs.com/advisories) or [Snyk](https://snyk.io/vuln/) advisories that may affect Express or other modules that your app uses.  In general, these databases are excellent resources for knowledge and tools about Node security.
 
 Finally, Express apps - like any other web apps - can be vulnerable to a variety of web-based attacks. Familiarize yourself with known [web vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10) and take precautions to avoid them.
 

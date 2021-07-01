@@ -1,26 +1,27 @@
 ---
 layout: page
-title: Knihy a blogy o Express
+title: Ek öğrenme
 menu: resources
-lang: sk
+lang: tr
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
+<div id="page-doc" markdown="1">
 
-# Knihy a blogy
+# Ek öğrenme
 
-<div class="doc-box doc-warn">Upozornenie: Príspevky komunity nepodliehajúce schvalovaniu.</div>
+<div class="doc-box doc-warn">Disclaimer: Unendorsed community content.</div>
 
-## Knihy
+## Books
 
-Tu je zopár z mnohých kníh o Express:
+Here are a few of the many books on Express:
 
+- **[Express.js in Action](http://www.manning.com/hahn/)**,
+Manning Publications, April 2016.
  - **[Getting MEAN with Mongo, Express, Angular, and Node](http://www.manning.com/sholmes/)**,
 Manning Publications, early 2015.
- - **[Express.js in Action](http://www.manning.com/hahn/)**,
-Manning Publications, early 2015.
+ - **[Getting MEAN with Mongo, Express, Angular, and Node, Second Edition](http://www.manning.com/sholmes2/)**,
+Manning Publications, April 2017.
+ - **[Pro Express.js: Master Express.js: The Node.js Framework For Your Web Development](http://www.apress.com/9781484200384)**,
+Apress, December 2014.
  - **[Mastering Web Application Development with Express](https://www.packtpub.com/web-development/mastering-web-application-development-express-raw)**,
 Packt Publishing, September 2014.
  - **[Web Development with Node and Express](http://shop.oreilly.com/product/0636920032977.do)**,
@@ -35,17 +36,21 @@ texxtoor, September 2015. In deutscher Sprache / in German language
 texxtoor, September 2015. In deutscher Sprache / in German language
 - **[Node Web Development, 2nd edition](https://www.packtpub.com/web-development/node-web-development-second-edition)**, Packt Publishing, August 2013
 
-### Pridajte vašu knihu!
+### Add your book here!
 
-[Upravte Markdown súbor](https://github.com/strongloop/expressjs.com/blob/gh-pages/resources/books-blogs.md) a pridajte odkaz na knihu, zašlite pull request (potrebné prihlásenie pomocou GitHub konta). Dodržiavajte formát zavedený v horeuvedenom zozname.
+[Edit the Markdown file](https://github.com/expressjs/expressjs.com/blob/gh-pages/{{ page.lang }}/resources/learning.md) and add a link to your book, then submit a pull request (GitHub login required).  Follow the format of the above listings.
 
-## Blogy
+## Blogs
 
 - [StrongLoop Blog: Express category](http://strongloop.com/strongblog/category/express/)
 - [Hage Yaapa's Blog: Express category](http://www.hacksparrow.com/category/express-js)
 - [Codeforgeek Blog: Express category](http://codeforgeek.com/code/nodejs/express/)
+- [Node-tricks Blog: Express category](http://node-tricks.com/category/express/)
 - [Baboon Blog: Express category](http://www.baboon.ir/tutorials/expressjs/) (Persian language)
+- [Techforgeek Blog: Express category](http://techforgeek.com/expressjs/)
+- [RoseHosting.com Blog: Express tag](https://www.rosehosting.com/blog/tag/express/)
 
-### Pridajte váš blog!
+### Add your blog here!
 
-[Upravte Markdown súbor](https://github.com/strongloop/expressjs.com/blob/gh-pages/{{ page.lang }}/resources/books-blogs.md) a pridajte odkaz na váš blog, zašlite pull request (potrebné prihlásenie pomocou GitHub konta). Dodržiavajte formát zavedený v horeuvedenom zozname.
+[Edit the Markdown file](https://github.com/expressjs/expressjs.com/blob/gh-pages/{{ page.lang }}/resources/learning.md) and add a link to your blog, then submit a pull request (GitHub login required).  Follow the format of the above listings.
+</div>

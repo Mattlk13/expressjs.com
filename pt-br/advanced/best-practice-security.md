@@ -75,7 +75,6 @@ segurança:
 
 * A [csp](https://github.com/helmetjs/csp) configura o cabeçalho `Content-Security-Policy` para ajudar a evitar ataques de cross-site scripting e outras injeções cross-site.
 * A [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) remove o cabeçalho `X-Powered-By`.
-* A [hpkp](https://github.com/helmetjs/hpkp) inclui os cabeçalhos [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) para evitar ataques man-in-the-middle com certificados falsificados.
 * A [hsts](https://github.com/helmetjs/hsts) configura o cabeçalho `Strict-Transport-Security`
 que impinge conexões seguras (HTTP sobre SSL/TLS) com o servidor.
 * A [ieNoOpen](https://github.com/helmetjs/ienoopen) configura o `X-Download-Options` para o IE8+.
@@ -216,57 +215,6 @@ app.use(session({
 </code>
 </pre>
 
-## Assegure que suas dependências sejam seguras
-
-Usar o npm para gerenciar as dependências do aplicativo é
-poderoso e conveniente.  Mas os pacotes utilizados podem conter
-vulnerabilidades críticas de segurança que poderiam afetar também o
-seu aplicativo.  A segurança do seu aplicativo é tão forte quanto o
-"elo mais fraco" em suas dependências.
-
-Use uma ou ambas das duas seguintes ferramentas para auxiliá-lo
-a assegurar a segurança de pacotes de terceiros utilizados por você:
-[nsp](https://www.npmjs.com/package/nsp) e [requireSafe](https://requiresafe.com/).  Essas
-duas ferramentas fazem em grande parte a mesma coisa.
-
-[nsp](https://www.npmjs.com/package/nsp) é uma
-ferramenta de linha de comandos que verifica o banco de dados de
-vulnerabilidades do  [Node
-Security Project](https://nodesecurity.io/) para determinar se o seu aplicativo utiliza
-pacotes com vulnerabilidades conhecidas. Instale-a como segue:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm i nsp -g
-</code>
-</pre>
-
-Use este comando para enviar o arquivo `npm-shrinkwrap.json` para validação para o [nodesecurity.io](https://nodesecurity.io/):
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-shrinkwrap
-</code>
-</pre>
-
-Use este comando para enviar o arquivo `package.json` para validação para o [nodesecurity.io](https://nodesecurity.io/):
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-package
-</code>
-</pre>
-
-Aqui está como usar o [requireSafe](https://requiresafe.com/) para auditar seus módulos Node:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm install -g requiresafe
-$ cd your-app
-$ requiresafe check
-</code>
-</pre>
-
 ## Considerações adicionais
 
 Aqui estão algumas recomendações adicionais da excelente [Lista
@@ -291,7 +239,7 @@ a ataques [negação de serviço de expressões regulares](https://www.owasp.org
 
 Fique atento às recomendações do
 [Node Security
-Project](https://nodesecurity.io/advisories) que podem afetar o Express ou outros módulos usados
+Project](https://npmjs.com/advisories) que podem afetar o Express ou outros módulos usados
 pelo seu aplicativo.  Em geral, o Node Security Project é um excelente
 recurso para conhecimento e ferramentas sobre segurança do Node.
 

@@ -70,9 +70,10 @@ http://localhost:3000/static/hello.html
 However, the path that you provide to the `express.static` function is relative to the directory from where you launch your `node` process. If you run the express app from another directory, it's safer to use the absolute path of the directory that you want to serve:
 
 ```js
+const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
 
-For more details about the `serve-static` function and its options, see  [serve-static](/{{page.lang}}/resources/middleware/serve-static.html).
+For more details about the `serve-static` function and its options, see  [serve-static](/resources/middleware/serve-static.html).
 
-### [Previous: Basic Routing ](/{{ page.lang }}/starter/basic-routing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: FAQ ](/{{ page.lang }}/starter/faq.html)
+### [Previous: Basic Routing ](/{{ page.lang }}/starter/basic-routing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: More examples ](/{{ page.lang }}/starter/examples.html)

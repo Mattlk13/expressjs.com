@@ -25,7 +25,7 @@ Express 2.x 和 3.x 不再得到维护。不会纠正这些版本中的安全问
 
 如果应用程序处理或传输敏感数据，请使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 来保护连接和数据。这种技术用于加密数据，然后将其从客户机发送到服务器，以防止某些常见的（而且容易的）黑客攻击。虽然 Ajax 和 POST 请求可能不是很明显，似乎“隐藏”在浏览器中，但是其网络流量很容易受到[包嗅探](https://en.wikipedia.org/wiki/Packet_analyzer)攻击和[中间人攻击](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)。
 
-您可能很熟悉安全套接字层 (SSL) 加密。[TLS 就是下一代的 SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85)。换言之，如果您以前使用 SSL，请考虑升级到 TLS。一般而言，我们建议使用 Nginx 来处理 TLS。要获取在 Nginx（和其他服务器）上配置 TLS 的优秀参考信息，请参阅 [Recommended Server Configurations](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations) (Mozilla Wiki)。
+您可能很熟悉安全套接字层 (SSL) 加密。[TLS 就是下一代的 SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx) 。换言之，如果您以前使用 SSL，请考虑升级到 TLS。一般而言，我们建议使用 Nginx 来处理 TLS。要获取在 Nginx（和其他服务器）上配置 TLS 的优秀参考信息，请参阅 [Recommended Server Configurations](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations) (Mozilla Wiki)。
 
 此外，可以使用一种方便的 [Let's Encrypt](https://letsencrypt.org/about/) 工具来获取免费的 TLS 证书，这是由[因特网安全研究组 (ISRG)](https://letsencrypt.org/isrg/) 提供的免费、自动化的开放式认证中心 (CA)。
 
@@ -37,7 +37,6 @@ Helmet 实际上只使用以下九个较小中间件函数的集合，这些功�
 
 * [csp](https://github.com/helmetjs/csp) 用于设置 `Content-Security-Policy` 头，帮助抵御跨站点脚本编制攻击和其他跨站点注入攻击。
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) 用于移除 `X-Powered-By` 头。
-* [hpkp](https://github.com/helmetjs/hpkp) 用于添加[公用密钥固定](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)头，防止以伪造证书进行的中间人攻击。
 * [hsts](https://github.com/helmetjs/hsts) 用于设置 `Strict-Transport-Security` 头，实施安全的服务器连接 (HTTP over SSL/TLS)。
 * [ieNoOpen](https://github.com/helmetjs/ienoopen) 用于为 IE8+ 设置 `X-Download-Options`。
 * [noCache](https://github.com/helmetjs/nocache) 用于设置 `Cache-Control` 和 Pragma 头，以禁用客户端高速缓存。
@@ -142,46 +141,6 @@ app.use(session({
 </code>
 </pre>
 
-## 确保依赖项的安全
-
-在管理应用程序的依赖项方面，npm 功能非常强大，而且使用方便。但是，您使用的软件包可能包含严重的安全漏洞，也可能会对应用程序产生影响。应用程序的安全取决于依赖项中“最弱”的一环。
-
-可以使用以下的任一或全部两种工具，帮助确保所使用的第三方软件包的安全性：[nsp](https://www.npmjs.com/package/nsp) 和 [requireSafe](https://requiresafe.com/)。这两种工具的功能大体相同。
-
-[nsp](https://www.npmjs.com/package/nsp) 是一种命令行工具，用于检查 [Node 安全项目](https://nodesecurity.io/)漏洞数据库，确定应用程序是否使用具有已知漏洞的软件包。可通过以下命令安装该工具：
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm i nsp -g
-</code>
-</pre>
-
-使用以下命令将 `npm-shrinkwrap.json` 文件提交至 [nodesecurity.io](https://nodesecurity.io/) 以进行验证：
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-shrinkwrap
-</code>
-</pre>
-
-使用以下命令将 `package.json` 文件提交至 [nodesecurity.io](https://nodesecurity.io/) 以进行验证：
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-package
-</code>
-</pre>
-
-以下示例说明如何使用 [requireSafe](https://requiresafe.com/) 来审计 Node 模块：
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm install -g requiresafe
-$ cd your-app
-$ requiresafe check
-</code>
-</pre>
-
 ## 其他注意事项
 
 以下是来自非常出色的 [Node.js 安全核对表](https://blog.risingstack.com/node-js-security-checklist/)的一些进一步建议。请参阅此博客帖子以了解关于这些建议的所有详细信息：
@@ -196,6 +155,6 @@ $ requiresafe check
 
 ## 避免其他已知的漏洞
 
-关注 [Node 安全项目](https://nodesecurity.io/advisories)公告，这可能会影响 Express 或应用程序使用的其他模块。一般而言，Node 安全项目是有关 Node 安全性的知识和工具的出色资源。
+关注 [Node 安全项目](https://npmjs.com/advisories)公告，这可能会影响 Express 或应用程序使用的其他模块。一般而言，Node 安全项目是有关 Node 安全性的知识和工具的出色资源。
 
 最后说明一点，和任何其他 Web 应用程序一样，Express 应用程序也容易受到各种基于 Web 的攻击。请熟悉已知的 [Web 漏洞](https://www.owasp.org/index.php/Top_10_2013-Top_10)并采取相应的预防措施。

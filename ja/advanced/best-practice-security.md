@@ -47,7 +47,6 @@ Helmet は、実際には、セキュリティー関連の HTTP ヘッダーを�
 
 * [csp](https://github.com/helmetjs/csp) は、クロスサイト・スクリプティング攻撃やその他のクロスサイト・インジェクションを防止するために `Content-Security-Policy` ヘッダーを設定します。
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) は、`X-Powered-By` ヘッダーを削除します。
-* [hpkp](https://github.com/helmetjs/hpkp) は、偽の証明書による中間者攻撃を防止するために [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) ヘッダーを追加します。
 * [hsts](https://github.com/helmetjs/hsts) は、サーバーへのセキュア (SSL/TLS を介して HTTP) 接続を適用する `Strict-Transport-Security` ヘッダーを設定します。
 * [ieNoOpen](https://github.com/helmetjs/ienoopen) は、IE8+ の `X-Download-Options` を設定します。
 * [noCache](https://github.com/helmetjs/nocache) は、クライアント側のキャッシュを無効にするために `Cache-Control` ヘッダーと Pragma ヘッダーを設定します。
@@ -178,7 +177,7 @@ $ snyk wizard
 
 ## その他の既知の脆弱性を回避する
 
-アプリケーションで使用する Express やその他のモジュールに影響を与える可能性がある [Node Security Project](https://nodesecurity.io/advisories) のアドバイザリーに常に注意してください。一般に、Node Security Project は、Node のセキュリティーに関する知識とツールの優れたリソースです。
+アプリケーションで使用する Express やその他のモジュールに影響を与える可能性がある [Node Security Project](https://npmjs.com/advisories) のアドバイザリーに常に注意してください。一般に、Node Security Project は、Node のセキュリティーに関する知識とツールの優れたリソースです。
 
 最後に、Express アプリケーションは、その他の Web アプリケーションと同様、さまざまな Web ベースの攻撃に対して脆弱になりえます。既知の [Web の脆弱性](https://www.owasp.org/index.php/Top_10_2013-Top_10)をよく理解して、それらを回避するための予防措置を取ってください。
 

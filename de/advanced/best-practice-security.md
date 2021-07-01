@@ -37,7 +37,6 @@ Ein handliches Tool zum Abrufen eines kostenloses TLS-Zertifikats ist außerdem 
 
 * Über [csp](https://github.com/helmetjs/csp) wird der `Content-Security-Policy`-Header festgelegt, um Cross-Site Scripting-Attacken und anderen standortübergreifenden Injektionen vorzubeugen.
 * Über [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) wird der `X-Powered-By`-Header entfernt.
-* Über [hpkp](https://github.com/helmetjs/hpkp) werden [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)-Header hinzugefügt, um Man-in-the-Middle-Attacken mit gefälschten Zertifikaten vorzubeugen.
 * Über [hsts](https://github.com/helmetjs/hsts) werden `Strict-Transport-Security`-Header festgelegt, über die sichere (HTTP over SSL/TLS) Verbindungen zum Server durchgesetzt werden.
 * Über [ieNoOpen](https://github.com/helmetjs/ienoopen) werden `X-Download-Options`-Header für IE8+ festgelegt.
 * Über [noCache](https://github.com/helmetjs/nocache) werden `Cache-Control`- und Pragma-Header festgelegt, um clientseitiges Caching zu deaktivieren.
@@ -142,46 +141,6 @@ app.use(session({
 </code>
 </pre>
 
-## Stellen Sie sicher, dass Ihre Abhängigkeiten sicher sind
-
-Die Verwendung von "npm" zur Verwaltung der Anwendungsabhängigkeiten ist leistungsfähig und bequem. Die Pakete, die Sie verwenden, können jedoch kritische Sicherheitslücken enthalten, die sich auch auf Ihre Anwendung auswirken können. Die Sicherheit Ihrer Anwendung ist immer nur so gut wie das "schwächste Glied" in den Abhängigkeiten.
-
-Verwenden Sie eines oder beide der folgenden Tools, um sicherzustellen, dass die verwendeten Pakete von anderen Anbietern sicher sind: [nsp](https://www.npmjs.com/package/nsp) und [requireSafe](https://requiresafe.com/). Die Funktionalität der beiden Tools ist im Großen und Ganzen identisch.
-
-[nsp](https://www.npmjs.com/package/nsp) ist ein Befehlszeilentool, das die [Node Security Project](https://nodesecurity.io/)-Datenbank mit Sicherheitslücken daraufhin überprüft, ob Ihre Anwendung Pakete mit bekannten Sicherheitslücken verwendet. Installieren Sie dieses Tool wie folgt:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm i nsp -g
-</code>
-</pre>
-
-Verwenden Sie diesen Befehl, um die Datei `npm-shrinkwrap.json` zur Validierung an [nodesecurity.io](https://nodesecurity.io/) zu senden:
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-shrinkwrap
-</code>
-</pre>
-
-Verwenden Sie diesen Befehl, um die Datei `package.json` zur Validierung an [nodesecurity.io](https://nodesecurity.io/) zu senden:
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp audit-package
-</code>
-</pre>
-
-So verwenden Sie [requireSafe](https://requiresafe.com/), um Ihre Node-Module zu überprüfen:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm install -g requiresafe
-$ cd your-app
-$ requiresafe check
-</code>
-</pre>
-
 ## Weitere Überlegungen
 
 Dies sind einige weitere Empfehlungen aus der hervorragenden [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/).  In diesem Blogbeitrag finden Sie alle Details zu diesen Empfehlungen:
@@ -196,6 +155,6 @@ Dies sind einige weitere Empfehlungen aus der hervorragenden [Node.js Security C
 
 ## Vermeiden Sie andere Schwachstellen
 
-Achten Sie auf [Node Security Project](https://nodesecurity.io/advisories)-Empfehlungen, die Express oder andere Module, die Ihre Anwendung nutzt, beeinträchtigen können. Im Allgemeinen ist Node Security Project aber eine exzellente Ressource mit Wissen und Tools zur Sicherheit von Node.
+Achten Sie auf [Node Security Project](https://npmjs.com/advisories)-Empfehlungen, die Express oder andere Module, die Ihre Anwendung nutzt, beeinträchtigen können. Im Allgemeinen ist Node Security Project aber eine exzellente Ressource mit Wissen und Tools zur Sicherheit von Node.
 
 Letztendlich können Express-Anwendungen – wie viele andere Webanwendungen auch – anfällig für eine Vielzahl webbasierter Attacken sein. Machen Sie sich deshalb mit bekannten [webspezifischen Schwachstellen](https://www.owasp.org/index.php/Top_10_2013-Top_10) vertraut und treffen Sie die geeigneten Vorkehrungen, um diese zu vermeiden.

@@ -20,7 +20,7 @@ Development a production prostredia sú zvyčajne nakonfigurované odlišne a ma
 Tento článok popisuje niektoré osvedčené postupy z pohľadu bezpečnosti Express aplikácií v produkcii.
 
 **POZN.**: Ak si myslíte, že ste objavili security vulnerabilitu Express-u, prosím pozrite si
-[Security Policies and Procedures](https://github.com/strongloop/express/blob/master/Security.md).
+[Security Policies and Procedures](https://github.com/expressjs/express/blob/master/Security.md).
 
 ## Nepoužívajte deprecated a vulnerable verzie Express-u
 
@@ -44,7 +44,6 @@ Helmet je v skutočnosti len kolekcia deviatich menších middleware funkcií na
 
 * [csp](https://github.com/helmetjs/csp) nastavuje `Content-Security-Policy` hlavičku, čím pomáha predchádzať cross-site scripting útokom a ďalším cross-site zraniteľnostiam.
 * [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) odstraňuje `X-Powered-By` hlavičku.
-* [hpkp](https://github.com/helmetjs/hpkp) nastavuje [Public Key Pinning](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) hlavičky, čím predchádza útokom typu man-in-the-middle so sfalšovanými certifikátmi.
 * [hsts](https://github.com/helmetjs/hsts) nastavuje `Strict-Transport-Security` hlavičku čím si vynúti zabezpečené (HTTP over SSL/TLS) spojenie so serverom.
 * [ieNoOpen](https://github.com/helmetjs/ienoopen) nastavuje hlavičku `X-Download-Options` pre IE8+.
 * [noCache](https://github.com/helmetjs/nocache) nastavuje hlavičky `Cache-Control` a Pragma pre zakázanie client-side caching-u.
@@ -149,38 +148,6 @@ app.use(session({
 </code>
 </pre>
 
-## Uistite sa, že používate bezpečné dependencie
-
-Používanie npm, ku správe dependencií aplikácie je efektívne a pohodlné, avšak dependencie ktoré používate môžu obsahovať kritické bezpečnostné diery, ktoré môžu taktiež ovplyvniť vašu aplikáciu. Bezpečnosť vašej aplikácie je len tak silná, ako je "najslabší článok" vašej aplikácie.
-
-Pre uistenie sa, že sú vaše dependencie bezpečné, použite niektorý z nasledujúcich toolov: [nsp](https://www.npmjs.com/package/nsp) a [requireSafe](https://requiresafe.com/). Oba robia v princípe to isté.
-
-[nsp](https://www.npmjs.com/package/nsp) je command-line tool, ktorý porovnáva [Node Security Project](https://nodesecurity.io/) vulnerability databázu voči dependenciám použitých vo vašej aplikácii a zisťuje, či neobsahujú niektoré zo známych vulnerabilities. Tento tool nainštalujete takto:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm i nsp -g
-</code>
-</pre>
-
-Pomocou nasledujúceho príkazu submitnete `npm-shrinkwrap.json` / `package.json` na validáciu do [nodesecurity.io](https://nodesecurity.io/):
-
-<pre>
-<code class="language-sh" translate="no">
-$ nsp check
-</code>
-</pre>
-
-Tu je príklad použitia [requireSafe](https://requiresafe.com/) pre audit vašich Node modulov:
-
-<pre>
-<code class="language-sh" translate="no">
-$ npm install -g requiresafe
-$ cd your-app
-$ requiresafe check
-</code>
-</pre>
-
 ## Ďalšie odporúčania
 
 Tu sú ďalšie odporúčania zo skvelého [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/) zoznamu. Pre viac detailov ohľadom jednotlivých odporúčaní si prečítajte samotný blog post:
@@ -195,6 +162,6 @@ Tu sú ďalšie odporúčania zo skvelého [Node.js Security Checklist](https://
 
 ## Vyhnite sa ďalším známym zraniteľnostiam
 
-Sledujte [Node Security Project](https://nodesecurity.io/advisories) odporučania, ktoré môžu ovplyvňovať Express, príp. ostatné moduly vašej aplikácie. Vo všeobecnosti je Node Security Project skvelým zdrojom znalostí a toolov ohľadom bezpečnosti Node.js.
+Sledujte [Node Security Project](https://npmjs.com/advisories) odporučania, ktoré môžu ovplyvňovať Express, príp. ostatné moduly vašej aplikácie. Vo všeobecnosti je Node Security Project skvelým zdrojom znalostí a toolov ohľadom bezpečnosti Node.js.
 
 Na záver dodajme, že Express aplikácie - ako akékoľvek iné webové aplikácie - môžu byť náchylné na mnohé typy útokov. Zoznámte sa so zoznamom známych [web vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10) a prijmite opatrenia, aby ste sa im vyhli.
